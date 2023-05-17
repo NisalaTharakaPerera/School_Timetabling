@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
-//@PlanningEntity
+@PlanningEntity //
 @Entity
 public class Lesson extends PanacheEntityBase {
     public Lesson(){}
@@ -56,6 +56,14 @@ public class Lesson extends PanacheEntityBase {
 
     public Room getRoom() {
         return room;
+    }
+
+    public void setTimeslot(Timeslot timeslot) {
+        this.timeslot = timeslot;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     @Override
