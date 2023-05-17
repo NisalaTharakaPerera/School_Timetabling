@@ -2,7 +2,10 @@ package org.acme.timetabling.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
+//@PlanningEntity
 @Entity
 public class Lesson extends PanacheEntityBase {
     public Lesson(){}
@@ -14,11 +17,13 @@ public class Lesson extends PanacheEntityBase {
     private String studentGroup;
 
     // Initializes/Changes during planning
+    @PlanningVariable(valueRangeProviderRefs = "timeslotRange")
     @ManyToOne
     // Every lesson is assigned exactly one timeslot
     // One timeslot has multiple lessons
     private Timeslot timeslot;
 
+    @PlanningVariable(valueRangeProviderRefs = "roomRange")
     @ManyToOne
     private Room room;
 
